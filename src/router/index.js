@@ -1,30 +1,58 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import SubCategoriesList from '@/views/SubCategoriesList'
+import store from '@/store'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 const routes = [
   {
-    path: "/",
-    name: "Home",
-    component: Home
+    path: '/',
+    name: 'categories-list',
+    component: () => import('../views/CategoriesList')
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
+    path: '/subcategories-list/:id',
+    name: 'subcategories-list',
+    component: SubCategoriesList,
+    props: true,
+    beforeEnter(routeTo, routeFrom, next) {
+      store
+        .dispatch('category/fetchCategory', routeTo.params.id)
+        .then(category => {
+          routeTo.params.category = category
+          next()
+        })
+    }
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/Auth/Login.vue')
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: () => import('../views/Auth/Register.vue')
   }
-];
+]
 
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   base: process.env.BASE_URL,
   routes
-});
+})
 
-export default router;
+router.beforeEach((to, from, next) => {
+  const publicPages = ['/login', '/register']
+  const authRequired = !publicPages.includes(to.path)
+  const loggedIn = localStorage.getItem('user')
+
+  if (authRequired && !loggedIn) {
+    next('/login')
+  } else {
+    next()
+  }
+})
+
+export default router
