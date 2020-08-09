@@ -1,10 +1,11 @@
-import apiService from '../../services/ApiService.js'
+import apiService from '@/services/ApiService'
 
 export const namespaced = true
 
 export const state = {
   categories: [],
-  category: {}
+  category: {},
+  rootCategories: []
 }
 export const mutations = {
   SET_CATEGORIES(state, categories) {
@@ -12,6 +13,9 @@ export const mutations = {
   },
   SET_CATEGORY(state, category) {
     state.category = category
+  },
+  SET_ROOT_CATEGORIES(state, rootCategories) {
+    state.rootCategories = rootCategories
   }
 }
 export const actions = {
@@ -42,5 +46,10 @@ export const actions = {
 export const getters = {
   getCategoryById: state => id => {
     return state.categories.find(category => category.id === id)
+  },
+  getRootCategories: state => {
+    return state.categories.filter(category => {
+      return category.parent === null
+    })
   }
 }

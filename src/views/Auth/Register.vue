@@ -7,9 +7,7 @@
       <!--        <p class="form-steppers__step">3</p>-->
       <!--      </div>-->
       <div class="form-card -shadow">
-        <div class="form-header">
-          Register
-        </div>
+        <div class="form-header">Register</div>
         <div class="form-content" v-if="currentStep === 1">
           <BaseInput
             class="form-content__input"
@@ -31,7 +29,7 @@
           ></BaseInput>
           <BaseSelect
             :options="roles"
-            class="form-content__select "
+            class="form-content__select"
             v-model="role"
           />
         </div>

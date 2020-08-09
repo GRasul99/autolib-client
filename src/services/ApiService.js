@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const apiService = axios.create({
-  baseURL: 'https://whispering-fortress-52261.herokuapp.com',
+  baseURL: 'https://whispering-fortress-52261.herokuapp.com/',
   withCredentials: false,
   headers: {
     Accept: 'application/json',

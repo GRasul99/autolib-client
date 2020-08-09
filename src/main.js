@@ -3,8 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import apiService from '@/services/ApiService'
-import Carousel3d from 'vue-carousel-3d'
-
+import VueCarousel from 'vue-carousel'
 import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
 
@@ -27,7 +26,7 @@ requireComponent.keys().forEach(fileName => {
   Vue.component(componentName, componentConfig.default || componentConfig)
 })
 
-Vue.use(Carousel3d)
+Vue.use(VueCarousel)
 Vue.config.productionTip = false
 
 new Vue({
@@ -39,16 +38,16 @@ new Vue({
       const userData = JSON.parse(userString)
       this.$store.commit('auth/SET_AUTH_USER_DATA', userData)
     }
+    //
     apiService.apiService.interceptors.response.use(
       response => response,
       error => {
-        if (error.response.status === 401 && userString.refresh === undefined) {
-          console.log(userString.refresh)
-          this.$router.push('/login')
+        console.log(error.response)
+        if (error.response.status === 401) {
+          this.$router.push('/')
           this.$store.dispatch('auth/logout')
-          // } else if (error.response.status === 401) {
-          //   this.$store.dispatch('auth/refreshToken')
         }
+        return Promise.reject(error)
       }
     )
   },

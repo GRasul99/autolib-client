@@ -1,42 +1,146 @@
 <template>
   <section class="home section">
-    <carousel-3d
-      @after-slide-change="onAfterSlideChange"
-      @before-slide-change="onBeforeSlideChange"
-      @last-slide="onLastSlide"
-      display="10"
-      border="0"
-      width="240"
-      space="250"
-      perspective="20"
+    <carousel
       class="home-carousel"
+      :autoplay="autoplay"
+      :perPageCustom="[
+        [300, 1],
+        [576, 1],
+        [768, 3],
+        [1024, 5],
+        [1280, 7],
+        [1500, 9]
+      ]"
     >
-      <slide
-        v-for="(category, i) in rootCategories"
-        :index="i"
-        :key="category.id"
-        class="home-carousel-slider"
-      >
+      <slide class="home-carousel-slide">
         <router-link
-          :to="{ name: 'subcategories-list', params: { id: category.id } }"
-          class="home-carousel-slider__link"
+          to="/subcategories-list/7"
+          class="home-carousel-slide__link"
         >
-          {{ category.id }} {{ category.name }}
+          <img
+            class="home-carousel-slide__img"
+            src="https://whispering-fortress-52261.herokuapp.com/templates/assets/img/webassets/obshiy.png"
+            alt="Geography"
+          />
         </router-link>
-        <img
-          src="../assets/logo.png"
-          class="home-carousel-slider__img"
-          alt="Logo"
-        />
+        <p>География. Биография. История</p>
       </slide>
-    </carousel-3d>
+      <slide class="home-carousel-slide">
+        <router-link
+          to="/subcategories-list/6"
+          class="home-carousel-slide__link"
+        >
+          <img
+            class="home-carousel-slide__img"
+            src="https://whispering-fortress-52261.herokuapp.com/templates/assets/img/webassets/obshestvennie.png"
+            alt="Medical"
+          />
+        </router-link>
+        <p>Прикладные науки. Медицина</p>
+      </slide>
+      <slide class="home-carousel-slide">
+        <router-link
+          to="/subcategories-list/1"
+          class="home-carousel-slide__link"
+        >
+          <img
+            class="home-carousel-slide__img"
+            src="https://whispering-fortress-52261.herokuapp.com/templates/assets/img/webassets/filosofiya.png"
+            alt="Psychology"
+          />
+        </router-link>
+        <p>Философия. Психология</p>
+      </slide>
+      <slide class="home-carousel-slide">
+        <router-link
+          to="/subcategories-list/2"
+          class="home-carousel-slide__link"
+        >
+          <img
+            class="home-carousel-slide__img"
+            src="https://whispering-fortress-52261.herokuapp.com/templates/assets/img/webassets/obshiy.png"
+            alt="Religion"
+          />
+        </router-link>
+        <p>Религия. Теология</p>
+      </slide>
+      <slide class="home-carousel-slide">
+        <router-link
+          to="/subcategories-list/3"
+          class="home-carousel-slide__link"
+        >
+          <img
+            class="home-carousel-slide__img"
+            src="https://whispering-fortress-52261.herokuapp.com/templates/assets/img/webassets/obshestvennie.png"
+            alt="Public science"
+          />
+        </router-link>
+        <p>Общественные науки</p>
+      </slide>
+      <slide class="home-carousel-slide">
+        <router-link
+          to="/subcategories-list/5"
+          class="home-carousel-slide__link"
+        >
+          <img
+            class="home-carousel-slide__img"
+            src="https://whispering-fortress-52261.herokuapp.com/templates/assets/img/webassets/matematika.png"
+            alt="Math"
+          />
+        </router-link>
+        <p>Математика. Естественные науки</p>
+      </slide>
+      <slide class="home-carousel-slide">
+        <router-link
+          to="/subcategories-list/634"
+          class="home-carousel-slide__link"
+        >
+          <img
+            class="home-carousel-slide__img"
+            src="https://whispering-fortress-52261.herokuapp.com/templates/assets/img/webassets/iskusstvo.png"
+            alt="Art"
+          />
+        </router-link>
+        <p>
+          Исскуство. Декоративно-прикладное исскуство. Фотография. Музыка. Игры.
+          Спорт
+        </p>
+      </slide>
+      <slide class="home-carousel-slide">
+        <router-link
+          to="/subcategories-list/658"
+          class="home-carousel-slide__link"
+        >
+          <img
+            class="home-carousel-slide__img"
+            src="https://whispering-fortress-52261.herokuapp.com/templates/assets/img/webassets/obshestvennie.png"
+            alt="Filology"
+          />
+        </router-link>
+        <p>
+          Языкознание. Филология. Художественная литература. Литературоведение
+        </p>
+      </slide>
+      <slide class="home-carousel-slide">
+        <router-link
+          to="/subcategories-list/672"
+          class="home-carousel-slide__link"
+        >
+          <img
+            class="home-carousel-slide__img"
+            src="https://whispering-fortress-52261.herokuapp.com/templates/assets/img/webassets/matematika.png"
+            alt="Science"
+          />
+        </router-link>
+        <p>Наука в целом (информационные технологии - 004)</p>
+      </slide>
+    </carousel>
   </section>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 import store from '../store'
-// import Category from '../components/Category'
 function foo(routeTo, next) {
   store.dispatch('category/fetchCategories').then(() => {
     next()
@@ -46,10 +150,9 @@ export default {
   name: 'Home',
   data() {
     return {
-      slides: 10
+      autoplay: true
     }
   },
-  // components: { Category },
   beforeRouteEnter(routeTo, routeFrom, next) {
     foo(routeTo, next)
   },
@@ -57,12 +160,7 @@ export default {
     foo(routeTo, next)
   },
   computed: {
-    ...mapState(['category']),
-    rootCategories() {
-      return this.category.categories.filter(category => {
-        return category.parent === null
-      })
-    }
+    ...mapState(['category'])
   },
   methods: {
     onAfterSlideChange() {},
@@ -73,11 +171,4 @@ export default {
 </script>
 
 <style lang="scss">
-.home {
-  margin-top: 2em;
-}
-.carousel-image {
-  width: 50px;
-  height: 80%;
-}
 </style>

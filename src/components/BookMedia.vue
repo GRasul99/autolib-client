@@ -1,14 +1,13 @@
 <template>
-  <div>
-    {{ book.author }} {{ book.title }} {{ book.id }}
-    <datetime type="datetime" v-model="orderTime"></datetime>
-    <div class="buttons">
-      <button class="btn download">
-        Download
-      </button>
-      <button class="btn order" @click="order">
-        Order
-      </button>
+  <div class="book-media">
+    <!--    <img :src="book.img" alt="Book" class="book-media__img" />-->
+    <p class="book-media__title">{{ book.title }}</p>
+    <p class="book-media__author">{{ book.author }}</p>
+    <div class="book-media-buttons">
+      <BaseButton class="book-media-buttons__button download"
+        >Download</BaseButton
+      >
+      <BaseButton class="book-media-buttons__button order">Order</BaseButton>
     </div>
   </div>
 </template>
@@ -67,7 +66,19 @@ export default {
 </script>
 
 <style lang="scss">
-.btn {
-  margin-top: 5px;
+.book-media {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+
+  &__img {
+    width: 220px;
+    height: 130px;
+  }
+
+  &-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }
 </style>
