@@ -1,6 +1,6 @@
 @import 'variables';
 @import 'normalize';
-@import 'media';
+
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&display=swap');
 
 * {
@@ -70,9 +70,13 @@ section,
     border-bottom: 3px solid black;
   }
   .nav-mobile {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1em;
     &-hidden {
       display: flex;
       flex-direction: column;
+      padding: 0 1em;
       &-item {
         & > div {
           display: flex;
@@ -225,10 +229,4 @@ section,
     }
   }
 }
-
-.home {
-  margin-top: 2em;
-  &-carousel {
-    text-align: center;
-  }
-}
+@import 'media';

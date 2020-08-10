@@ -3,13 +3,9 @@
     .nav-list {
       display: none;
     }
-    .nav-mobile {
-      display: flex;
-      justify-content: space-between;
-    }
   }
 }
-@media screen and (min-width: 769px){
+@media screen and (min-width: 769px) {
   #nav {
     .nav-list {
       display: flex;
