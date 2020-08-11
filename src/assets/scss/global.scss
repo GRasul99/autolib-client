@@ -12,6 +12,11 @@
   font-family: 'Comfortaa', cursive;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 a {
   text-decoration: none;
   color: white;
@@ -34,13 +39,19 @@ section,
 }
 
 .section {
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 1em;
+  padding-left: 1em;
 }
 
 .section-fluid {
   padding-left: 0;
   padding-right: 0;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 #nav {
@@ -78,6 +89,7 @@ section,
       flex-direction: column;
       padding: 0 1em;
       &-item {
+        padding-top: 1em;
         & > div {
           display: flex;
           flex-direction: column;
@@ -100,8 +112,12 @@ section,
   box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 1px 10px 0 rgba(0, 0, 0, 0.3);
 }
 
-.step-active {
-  border: 1px solid #565638;
+.page {
+  flex: 1 0 auto;
+}
+
+.footer {
+  flex: 0 0 auto;
 }
 
 .form {
@@ -225,6 +241,21 @@ section,
       &:hover {
         filter: brightness(0.8);
         cursor: pointer;
+      }
+    }
+  }
+}
+
+.home {
+  &-carousel {
+    margin-top: 6em;
+    text-align: center;
+    &-slide {
+      &__img {
+        padding: 1em;
+      }
+      &__link {
+        color: white;
       }
     }
   }

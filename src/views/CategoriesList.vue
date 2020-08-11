@@ -3,9 +3,10 @@
     <carousel
       class="home-carousel"
       :autoplay="autoplay"
+      :scroll-per-page="scrollPerPage"
       :perPageCustom="[
-        [300, 1],
-        [576, 1],
+        [300, 2],
+        [576, 2],
         [768, 3],
         [1024, 5],
         [1280, 7],
@@ -135,131 +136,6 @@
         <p>Наука в целом (информационные технологии - 004)</p>
       </slide>
     </carousel>
-
-    <!--    <div class="own-carousel">-->
-    <!--      <div class="own-carousel-slide">-->
-    <!--        <router-link-->
-    <!--          to="/subcategories-list/7"-->
-    <!--          class="own-carousel-slide__link"-->
-    <!--        >-->
-    <!--          <img-->
-    <!--            class="own-carousel-slide__img"-->
-    <!--            src="https://whispering-fortress-52261.herokuapp.com/templates/assets/img/webassets/obshiy.png"-->
-    <!--            alt="Geography"-->
-    <!--          />-->
-    <!--        </router-link>-->
-    <!--        <p>География. Биография. История</p>-->
-    <!--      </div>-->
-    <!--      <div class="own-carousel-slide">-->
-    <!--        <router-link-->
-    <!--          to="/subcategories-list/6"-->
-    <!--          class="own-carousel-slide__link"-->
-    <!--        >-->
-    <!--          <img-->
-    <!--            class="own-carousel-slide__img"-->
-    <!--            src="https://whispering-fortress-52261.herokuapp.com/templates/assets/img/webassets/obshestvennie.png"-->
-    <!--            alt="Medical"-->
-    <!--          />-->
-    <!--        </router-link>-->
-    <!--        <p>Прикладные науки. Медицина</p>-->
-    <!--      </div>-->
-    <!--      <div class="own-carousel-slide">-->
-    <!--        <router-link-->
-    <!--          to="/subcategories-list/1"-->
-    <!--          class="own-carousel-slide__link"-->
-    <!--        >-->
-    <!--          <img-->
-    <!--            class="own-carousel-slide__img"-->
-    <!--            src="https://whispering-fortress-52261.herokuapp.com/templates/assets/img/webassets/filosofiya.png"-->
-    <!--            alt="Psychology"-->
-    <!--          />-->
-    <!--        </router-link>-->
-    <!--        <p>Философия. Психология</p>-->
-    <!--      </div>-->
-    <!--      <div class="own-carousel-slide">-->
-    <!--        <router-link-->
-    <!--          to="/subcategories-list/2"-->
-    <!--          class="own-carousel-slide__link"-->
-    <!--        >-->
-    <!--          <img-->
-    <!--            class="own-carousel-slide__img"-->
-    <!--            src="https://whispering-fortress-52261.herokuapp.com/templates/assets/img/webassets/obshiy.png"-->
-    <!--            alt="Religion"-->
-    <!--          />-->
-    <!--        </router-link>-->
-    <!--        <p>Религия. Теология</p>-->
-    <!--      </div>-->
-    <!--      <div class="own-carousel-slide">-->
-    <!--        <router-link-->
-    <!--          to="/subcategories-list/3"-->
-    <!--          class="own-carousel-slide__link"-->
-    <!--        >-->
-    <!--          <img-->
-    <!--            class="own-carousel-slide__img"-->
-    <!--            src="https://whispering-fortress-52261.herokuapp.com/templates/assets/img/webassets/obshestvennie.png"-->
-    <!--            alt="Public science"-->
-    <!--          />-->
-    <!--        </router-link>-->
-    <!--        <p>Общественные науки</p>-->
-    <!--      </div>-->
-    <!--      <div class="own-carousel-slide">-->
-    <!--        <router-link-->
-    <!--          to="/subcategories-list/5"-->
-    <!--          class="own-carousel-slide__link"-->
-    <!--        >-->
-    <!--          <img-->
-    <!--            class="own-carousel-slide__img"-->
-    <!--            src="https://whispering-fortress-52261.herokuapp.com/templates/assets/img/webassets/matematika.png"-->
-    <!--            alt="Math"-->
-    <!--          />-->
-    <!--        </router-link>-->
-    <!--        <p>Математика. Естественные науки</p>-->
-    <!--      </div>-->
-    <!--      <div class="own-carousel-slide">-->
-    <!--        <router-link-->
-    <!--          to="/subcategories-list/634"-->
-    <!--          class="own-carousel-slide__link"-->
-    <!--        >-->
-    <!--          <img-->
-    <!--            class="own-carousel-slide__img"-->
-    <!--            src="https://whispering-fortress-52261.herokuapp.com/templates/assets/img/webassets/iskusstvo.png"-->
-    <!--            alt="Art"-->
-    <!--          />-->
-    <!--        </router-link>-->
-    <!--        <p>-->
-    <!--          Исскуство. Декоративно-прикладное исскуство. Фотография. Музыка. Игры.-->
-    <!--          Спорт-->
-    <!--        </p>-->
-    <!--      </div>-->
-    <!--      <div class="own-carousel-slide">-->
-    <!--        <router-link-->
-    <!--          to="/subcategories-list/658"-->
-    <!--          class="own-carousel-slide__link"-->
-    <!--        >-->
-    <!--          <img-->
-    <!--            class="own-carousel-slide__img"-->
-    <!--            src="https://whispering-fortress-52261.herokuapp.com/templates/assets/img/webassets/obshestvennie.png"-->
-    <!--            alt="Filology"-->
-    <!--          />-->
-    <!--        </router-link>-->
-    <!--        <p>-->
-    <!--          Языкознание. Филология. Художественная литература. Литературоведение-->
-    <!--        </p>-->
-    <!--      </div>-->
-    <!--      <div class="own-carousel-slide">-->
-    <!--        <router-link-->
-    <!--          to="/subcategories-list/672"-->
-    <!--          class="own-carousel-slide__link"-->
-    <!--        >-->
-    <!--          <img-->
-    <!--            class="own-carousel-slide__img"-->
-    <!--            src="https://whispering-fortress-52261.herokuapp.com/templates/assets/img/webassets/matematika.png"-->
-    <!--            alt="Science"-->
-    <!--          />-->
-    <!--        </router-link>-->
-    <!--        <p>Наука в целом (информационные технологии - 004)</p>-->
-    <!--      </div>-->
-    <!--    </div>-->
   </section>
 </template>
 
@@ -275,7 +151,8 @@ export default {
   name: 'Home',
   data() {
     return {
-      autoplay: true
+      autoplay: true,
+      scrollPerPage: true
     }
   },
   beforeRouteEnter(routeTo, routeFrom, next) {
@@ -295,35 +172,4 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.home {
-  &-carousel {
-    margin-top: 6em;
-    text-align: center;
-    &-slide {
-      &__img {
-        padding: 1em;
-      }
-    }
-  }
-}
-.own-carousel {
-  display: flex;
-  text-align: center;
-  overflow-x: auto;
-  scrollbar-width: none;
-  margin-top: 5em;
-  &-slide {
-    margin: 0 0.5em;
-    &__link {
-    }
-    &__img {
-      height: 200px;
-      width: 150px;
-    }
-  }
-  &::-webkit-scrollbar {
-    display: none;
-  }
-}
-</style>
+<style lang="scss"></style>

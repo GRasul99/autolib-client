@@ -1,16 +1,23 @@
 <template>
   <div id="app">
     <TheAppNav />
-    <router-view :key="$route.fullPath" />
+    <router-view :key="$route.fullPath" class="page" />
+    <TheFooter />
   </div>
 </template>
 
-<style lang="scss">
-@import 'assets/scss/global';
-</style>
 <script>
 import TheAppNav from '@/components/TheAppNav'
+import TheFooter from '@/components/TheFooter'
 export default {
-  components: { TheAppNav }
+  components: { TheFooter, TheAppNav }
 }
 </script>
+
+<style lang="scss">
+@import 'assets/scss/global';
+#app {
+  display: flex;
+  flex-direction: column;
+}
+</style>

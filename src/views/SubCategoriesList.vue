@@ -1,40 +1,34 @@
 <template>
-  <!-- <section class="section subcategories-list">
-    {{ category.id }} {{ category.name }}
-    <div>
-      UDC:
-    </div>
-    <div>
-      {{ category.udc_id }}
-    </div>
-    <div v-for="subCat in subCategories" :key="subCat.id" :category="category">
-      <router-link
-        :to="{ name: 'subcategories-list', params: { id: subCat.id } }"
-      >
-        {{ subCat.id }}
-      </router-link>
-    </div>
-    <button @click="logtoconsole">Console</button>
-    <div class="books-grid">
-      <BookMedia v-for="book in booksWithUDC" :key="book.id" :book="book" />
-    </div>
-  </section>-->
   <section class="section subcategories">
-    <div class="breadcrumbs">breadcrumbs</div>
-    <div class="subcategories-list -shadow">
-      <div
+    <carousel
+      class="-shadow subcategories-carousel"
+      :autoplay="autoplay"
+      :autoplay-timeout="autoplayTimeout"
+      :scroll-per-page="scrollPerPage"
+      :navigation-enabled="navigationEnabled"
+      :pagination-enabled="paginationEnabled"
+      :perPageCustom="[
+        [300, 2],
+        [576, 2],
+        [768, 3],
+        [1024, 5],
+        [1280, 7],
+        [1500, 9]
+      ]"
+    >
+      <slide
         v-for="subCat in subCategories"
         :key="subCat.id"
         :category="category"
-        class="subcategories-list-item"
+        class="subcategories-carousel-item"
       >
         <router-link
           :to="{ name: 'subcategories-list', params: { id: subCat.id } }"
-          class="subcategories-list-item__link"
+          class="subcategories-carousel-item__link"
           >{{ subCat.name }}</router-link
         >
-      </div>
-    </div>
+      </slide>
+    </carousel>
     <div class="book-media-wrapper">
       <BookMedia v-for="book in booksWithUDC" :key="book.id" :book="book" />
     </div>
@@ -56,7 +50,12 @@ export default {
   data() {
     return {
       categories: [],
-      books: []
+      books: [],
+      autoplay: true,
+      scrollPerPage: true,
+      navigationEnabled: true,
+      paginationEnabled: false,
+      autoplayTimeout: 3000
     }
   },
   components: {
@@ -111,16 +110,11 @@ export default {
 
 <style lang="scss">
 .subcategories {
-  &-list {
-    margin-top: 1em;
-    display: flex;
+  &-carousel {
     text-align: center;
-    overflow-x: auto;
-    scrollbar-width: none;
-    padding: 0.5em 1em;
-    min-width: 200px;
+    margin-left: 1em;
+    margin-right: 1em;
     &-item {
-      margin-right: 1em;
       &__link {
         text-transform: initial;
         color: black;
@@ -128,13 +122,10 @@ export default {
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
         overflow-y: hidden;
-        &:hover{
+        &:hover {
           -webkit-line-clamp: none;
         }
       }
-    }
-    &::-webkit-scrollbar {
-      display: none;
     }
   }
 }
