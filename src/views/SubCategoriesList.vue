@@ -109,26 +109,6 @@ export default {
 </script>
 
 <style lang="scss">
-.subcategories {
-  &-carousel {
-    text-align: center;
-    margin-left: 1em;
-    margin-right: 1em;
-    &-item {
-      &__link {
-        text-transform: initial;
-        color: black;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 3;
-        overflow-y: hidden;
-        &:hover {
-          -webkit-line-clamp: none;
-        }
-      }
-    }
-  }
-}
 .book-media-wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));

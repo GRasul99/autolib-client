@@ -120,6 +120,28 @@ section,
   flex: 0 0 auto;
 }
 
+.subcategories {
+  margin-top: 2em;
+  &-carousel {
+    text-align: center;
+    margin-left: 1em;
+    margin-right: 1em;
+    &-item {
+      &__link {
+        text-transform: initial;
+        color: black;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow-y: hidden;
+        &:hover {
+          -webkit-line-clamp: none;
+        }
+      }
+    }
+  }
+}
+
 .form {
   margin-top: 3em;
   display: grid;
