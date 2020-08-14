@@ -35,15 +35,19 @@
             alt="Book"
           />
           <div class="modal-media-content">
-            <h3>
-              <strong>Название книги:</strong>
-              {{ book.title }}asdasldas; a;s'dlsa;'dlsa;'dl ;'asldas;ld;
-            </h3>
-            <p><strong>Автор книги:</strong> {{ book.author }}</p>
-            <p><strong>Рейтинг: </strong> {{ book.rating }}</p>
+            <div class="modal-media-content-text">
+              <h3>
+                <strong>Название книги:</strong>
+                {{ book.title }}
+              </h3>
+              <p><strong>Автор книги:</strong> {{ book.author }}</p>
+              <p><strong>Рейтинг: </strong> {{ book.rating }}</p>
+            </div>
             <div class="modal-media-buttons">
-              <BaseButton>Download</BaseButton>
-              <BaseButton>Order</BaseButton>
+              <BaseButton class="modal-media-buttons__button"
+                >Download</BaseButton
+              >
+              <BaseButton class="modal-media-buttons__button">Order</BaseButton>
             </div>
           </div>
         </div>
@@ -62,58 +66,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.modal {
-  &-close {
-    width: 1em;
-    text-align: center;
-    background: transparent;
-    border: none;
-    margin: 0.5em 1em 0.5em auto;
-    cursor: pointer;
-    .fa {
-      font-size: 1.5em;
-    }
-  }
-  &-mask {
-    position: fixed;
-    z-index: 9998;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    display: flex;
-    align-items: center;
-    justify-items: center;
-    transition: opacity 0.3s ease;
-  }
-  &-wrapper {
-    display: grid;
-    background: azure;
-    margin: 0 auto;
-  }
-  &-media {
-    //display: grid;
-    //grid-template-columns: repeat(2, minmax(210px, 1fr));
-    //grid-gap: 1em;
-    display: flex;
-    justify-content: space-between;
-    margin: 0.5em;
-    border: 1px solid #1fe70e;
-    &__img {
-      width: 200px;
-      height: 250px;
-      border: 1px solid #1fe70e;
-    }
-    &-content {
-      text-align: left;
-      border: 1px solid #1fe70e;
-    }
-    &-buttons {
-      margin-top: auto;
-    }
-  }
-}
+
 //.modal-mask {
 //  position: fixed;
 //  z-index: 9998;

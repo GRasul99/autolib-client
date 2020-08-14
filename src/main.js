@@ -6,6 +6,11 @@ import apiService from '@/services/ApiService'
 import VueCarousel from 'vue-carousel'
 import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
+import DateFilter from '@/filters/date'
+import Vuelidate from 'vuelidate'
+
+Vue.use(Vuelidate)
+Vue.filter('date', DateFilter)
 
 const requireComponent = require.context(
   './components',
