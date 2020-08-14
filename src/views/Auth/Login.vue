@@ -12,6 +12,7 @@
             placeholder="Username"
             class="form-content__input"
           />
+          <p></p>
           <BaseInput
             v-model="password"
             type="password"
@@ -20,6 +21,9 @@
           />
         </div>
         <BaseButton class="form-content__button">Login</BaseButton>
+        <p class="errorMessage" v-if="status === 400">
+          Неверные данные для входа
+        </p>
       </div>
     </form>
   </section>
@@ -31,7 +35,8 @@ export default {
   data() {
     return {
       username: '',
-      password: ''
+      password: '',
+      status: null
     }
   },
   methods: {
@@ -43,6 +48,9 @@ export default {
         })
         .then(() => {
           this.$router.push({ name: 'categories-list' })
+        })
+        .catch(error => {
+          this.status = error.response.status
         })
     }
   }

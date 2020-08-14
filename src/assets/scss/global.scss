@@ -48,6 +48,10 @@ section,
   padding-right: 0;
 }
 
+.errorMessage {
+  color: #ff1518;
+}
+
 #app {
   display: flex;
   flex-direction: column;
