@@ -1,9 +1,11 @@
 import apiService from '@/services/ApiService'
+import jwtDecode from 'jwt-decode'
 export const namespaced = true
 
 export const state = {
   user: null,
-  refresh: null
+  refresh: null,
+  user_id: null
 }
 export const mutations = {
   SET_AUTH_USER_DATA(state, userData) {
@@ -13,6 +15,7 @@ export const mutations = {
     ] = `Bearer ${userData.access}`
     state.user = userData
     state.refresh = userData.refresh
+    state.user_id = jwtDecode(userData.access).user_id
   },
   LOG_OUT() {
     localStorage.removeItem('user')
